@@ -8,11 +8,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup PlatformIO
-        uses: platformio/action@v2
+      - name: Install PlatformIO
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install platformio
 
       - name: Build firmware
-        run: pio run
+        run: |
+          pio run
+
+      - name: Upload BIN
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: .pio/build/**/firmware.bin
