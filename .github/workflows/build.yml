@@ -7,5 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: platformio/action@v2
-      - run: platformio run
+      - uses: platformio/action@v1
+      - run: pio run
